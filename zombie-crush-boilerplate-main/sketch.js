@@ -19,36 +19,41 @@ function setup() {
   frameRate(80);
   rectMode(CENTER);
   ellipseMode(RADIUS)
- wall=new base (1439,300,400,200)
-  wall2=new base (5,300,400,200)
-  bridge= new Bridge (18,{ x:5,y:5});
-  ground= new base(754,700,1510,20)
+ wall=new base (1439,300,800,200, "#8d6e63", true)
+  wall2=new base (5,300,800,200, "#8d6e63", true)
+  bridge= new Bridge (15,{ x:10,y:10}, "#8d6e63", true);
+  ground= new base(754,700,1510,20, "#8d6e63", true)
 
   Matter.Composite.add(bridge.body, wall )
      wall1= new link (bridge,wall)
 
     rectMode(CENTER);
   ellipseMode(RADIUS)
+  for(var i=0;i<=8; i++){
+    var x=random(1454,720)
+    var y=random (-10,140)
+  var  stone=new stone1(x,y,80)
+  stones.push(stone)
 }
 
+}
 function draw() {
   background(51);
   Engine.update(engine);
-wall.show();
-wall2.show();
- ground.show();
+  wall.show();
+  wall2.show();
   bridge.show()
+   ground.show();
+    
 
- for(var i=0;i<=8; i++){
-  var x=random( width/2 -200, width/2+300)
-  var y=random (-10,140)
-  var  stone=new stone1(x,y,80 )
-stones.push(stone)
-showStones(i,stones)
- }
  
-
+//showStones(i,stones)
+ 
+ 
+ for (var stone of stones) {
+  stone.show();
 }
-function showStones (index,stones){
-stones[index].show();
 }
+//function showStones (index,stones){
+  //stones[index].show();
+  
